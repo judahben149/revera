@@ -1,9 +1,13 @@
 name: CI
 
+# Disabled on GitHub to save Actions minutes until it's needed. Turn it on with
+# `gh workflow enable CI` (or Actions → CI → Enable workflow); it then runs on pushes to main,
+# pull requests, and on demand via "Run workflow".
 on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}

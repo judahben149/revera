@@ -18,6 +18,9 @@ Compose Multiplatform.
 Desktop installers are built on the OS they target (DMG/PKG on macOS, MSI/EXE on Windows,
 DEB/RPM on Linux); CI has a job for each.
 
+CI (`.github/workflows/ci.yml`) is currently **disabled** on GitHub. Enable it when needed with
+`gh workflow enable CI` (or Actions → CI → Enable workflow).
+
 ## Requirements
 
 - **JDK 17+** (Gradle will provision a toolchain if needed)
