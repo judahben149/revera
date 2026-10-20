@@ -21,7 +21,7 @@ jobs:
     name: Lint & unit tests (JVM, Android host)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
         with:
           distribution: temurin
@@ -34,7 +34,7 @@ jobs:
     name: Android
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
         with:
           distribution: temurin
@@ -50,7 +50,7 @@ jobs:
     name: Web (Kotlin/Wasm)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
         with:
           distribution: temurin
@@ -70,7 +70,7 @@ jobs:
         os: [macos-latest, windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
         with:
           distribution: temurin
@@ -86,7 +86,7 @@ jobs:
     name: iOS / iPadOS
     runs-on: macos-26
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
         with:
           distribution: temurin
