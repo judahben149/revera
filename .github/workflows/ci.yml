@@ -22,7 +22,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew spotlessCheck
       - run: ./gradlew desktopTest testAndroidHostTest -Prevera.warningsAsErrors=true
 
@@ -35,7 +35,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew :apps:android:assembleDebug :apps:android:lintDebug
       - uses: actions/upload-artifact@v5
         with:
@@ -51,7 +51,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew :apps:web:wasmJsBrowserDistribution
       - uses: actions/upload-artifact@v5
         with:
@@ -71,7 +71,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew :apps:desktop:packageDistributionForCurrentOS
       - uses: actions/upload-artifact@v5
         with:
@@ -87,7 +87,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew iosSimulatorArm64Test
       - name: Build app for simulator
         run: |
