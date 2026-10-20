@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Googlebook, ChromeOS and Android desktop windowing: keyboard + trackpad devices must not be
+         filtered out of Play because the app "requires" a touchscreen. -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <application
+        android:name=".ReveraApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Revera">
+
+        <!--
+          Adaptive by design:
+          - resizeableActivity + no screenOrientation lock: free-form windows, split screen, foldables.
+          - configChanges: resizing, folding/unfolding, moving between displays, attaching a keyboard
+            or switching dark mode don't recreate the Activity; Compose relayouts instead.
+          - <layout>: default and minimum free-form window size on Googlebook / desktop windowing.
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|density|keyboard|keyboardHidden|navigation|uiMode"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:theme="@style/Theme.Revera.Starting"
+            android:windowSoftInputMode="adjustResize">
+            <layout
+                android:defaultWidth="1200dp"
+                android:defaultHeight="800dp"
+                android:gravity="center"
+                android:minWidth="360dp"
+                android:minHeight="480dp" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

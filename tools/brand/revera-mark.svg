@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- Revera monogram on the 108-unit adaptive-icon grid (safe zone: central 66 units). -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42,34 L42,74"/>
+    <path d="M42,34 H53 A11,11 0 0 1 53,56 H42"/>
+    <path d="M51,56 L66,74"/>
+  </g>
+  <circle cx="70.5" cy="33.5" r="4.5" fill="#FFC9AE"/>
+</svg>

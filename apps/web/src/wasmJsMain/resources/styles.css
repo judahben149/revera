@@ -1,0 +1,43 @@
+:root {
+  color-scheme: light dark;
+  --revera-background: #FBF8FF;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --revera-background: #121318; }
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--revera-background);
+}
+
+#revera {
+  position: fixed;
+  inset: 0;
+}
+
+#splash {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--revera-background);
+  pointer-events: none;
+}
+
+#splash img {
+  animation: revera-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes revera-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #splash img { animation: none; }
+}

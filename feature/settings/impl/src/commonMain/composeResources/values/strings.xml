@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="settings_title">Settings</string>
+  <string name="settings_section_appearance">Appearance</string>
+  <string name="settings_theme">Theme</string>
+  <string name="settings_theme_system">System</string>
+  <string name="settings_theme_light">Light</string>
+  <string name="settings_theme_dark">Dark</string>
+  <string name="settings_dynamic_color">Dynamic color</string>
+  <string name="settings_dynamic_color_summary">Use colors from your wallpaper</string>
+  <string name="settings_section_window">This window</string>
+  <string name="settings_window_width">Width class</string>
+  <string name="settings_window_height">Height class</string>
+  <string name="settings_window_posture">Posture</string>
+  <string name="settings_window_panes">Panes side by side</string>
+  <string name="settings_posture_flat">Flat</string>
+  <string name="settings_posture_tabletop">Tabletop (half-folded, horizontal hinge)</string>
+  <string name="settings_posture_book">Book (half-folded, vertical hinge)</string>
+  <string name="settings_section_about">About</string>
+  <string name="settings_version">Version</string>
+  <string name="settings_platform">Platform</string>
+</resources>

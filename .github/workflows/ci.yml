@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GRADLE_OPTS: -Dorg.gradle.daemon=false
+
+jobs:
+  checks:
+    name: Lint & unit tests (JVM, Android host)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew spotlessCheck
+      - run: ./gradlew desktopTest testAndroidHostTest -Prevera.warningsAsErrors=true
+
+  android:
+    name: Android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew :apps:android:assembleDebug :apps:android:lintDebug
+      - uses: actions/upload-artifact@v5
+        with:
+          name: android-debug-apk
+          path: apps/android/build/outputs/apk/debug/*.apk
+
+  web:
+    name: Web (Kotlin/Wasm)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew :apps:web:wasmJsBrowserDistribution
+      - uses: actions/upload-artifact@v5
+        with:
+          name: web-dist
+          path: apps/web/build/dist/wasmJs/productionExecutable
+
+  desktop:
+    name: Desktop (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew :apps:desktop:packageDistributionForCurrentOS
+      - uses: actions/upload-artifact@v5
+        with:
+          name: desktop-${{ matrix.os }}
+          path: apps/desktop/build/compose/binaries/main/*/*
+
+  ios:
+    name: iOS / iPadOS
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v5
+      - run: ./gradlew iosSimulatorArm64Test
+      - name: Build app for simulator
+        run: |
+          xcodebuild -project apps/ios/Revera.xcodeproj -scheme Revera \
+            -configuration Debug -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO build

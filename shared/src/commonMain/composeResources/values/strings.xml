@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Revera</string>
+  <string name="nav_home">Home</string>
+  <string name="nav_settings">Settings</string>
+  <string name="menu_go">Go</string>
+  <string name="action_open_home">Go to Home</string>
+  <string name="action_open_settings">Open Settings</string>
+  <string name="action_navigate_back">Back</string>
+</resources>

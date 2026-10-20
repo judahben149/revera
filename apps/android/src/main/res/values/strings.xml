@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- In-app strings live in Compose resources (composeResources/). Only system-facing strings here. -->
+  <string name="app_name">Revera</string>
+</resources>

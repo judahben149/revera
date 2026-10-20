@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="home_title">Revera</string>
+  <string name="home_empty_title">Nothing here yet</string>
+  <string name="topic_reading_time">%1$d min read</string>
+  <string name="topic_back">Back</string>
+  <string name="topic_not_found">This topic is no longer available</string>
+  <string name="topic_placeholder_title">Pick a topic</string>
+  <string name="topic_placeholder_message">Select something from the list to read it here.</string>
+</resources>
