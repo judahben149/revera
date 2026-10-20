@@ -17,6 +17,12 @@ updates:
         patterns:
           - "androidx.*"
           - "com.android.*"
+    ignore:
+      # Material 3 (incl. adaptive) is versioned in lockstep with Compose Multiplatform: each CMP
+      # release pairs specific versions. Patch/alpha bumps within the paired line are fine, but
+      # minor/major jumps belong to a CMP upgrade — do those by hand from the CMP release notes.
+      - dependency-name: "org.jetbrains.compose.material3*"
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
